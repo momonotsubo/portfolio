@@ -467,12 +467,13 @@ const SensoryUI = () => {
                 うどんフォント
               </h2>
               
-              {/* 画像エリア（仮） */}
-              <div className="mb-4 rounded-lg overflow-hidden" style={{ background: 'rgba(255, 255, 255, 0.05)', aspectRatio: '16/9', maxHeight: '200px' }}>
-                <div className="w-full h-full flex items-center justify-center text-white/30 text-xs">
-                  ここに画像が入ります<br />
-                  images/udon-font.jpg
-                </div>
+              {/* 画像 */}
+              <div className="mb-4 rounded-lg overflow-hidden" style={{ maxHeight: '200px' }}>
+                <img 
+                  src="images/udon-font.jpg" 
+                  alt="うどんフォント" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               
               <div className="space-y-4 text-white/70 leading-relaxed">
@@ -525,12 +526,13 @@ const SensoryUI = () => {
                 ギャグ投稿アプリ
               </h2>
               
-              {/* 画像エリア（仮） */}
-              <div className="mb-4 rounded-lg overflow-hidden" style={{ background: 'rgba(255, 255, 255, 0.05)', aspectRatio: '16/9', maxHeight: '200px' }}>
-                <div className="w-full h-full flex items-center justify-center text-white/30 text-xs">
-                  ここに画像が入ります<br />
-                  images/gag-app.jpg
-                </div>
+              {/* 画像 */}
+              <div className="mb-4 rounded-lg overflow-hidden" style={{ maxHeight: '200px' }}>
+                <img 
+                  src="images/gag-app.jpg" 
+                  alt="ギャグ投稿アプリ" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               
               <div className="space-y-4 text-white/70 leading-relaxed">
