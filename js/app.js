@@ -8,6 +8,7 @@ const SensoryUI = () => {
   const [lightRays, setLightRays] = useState([]);
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
   const [uiVisible, setUiVisible] = useState(true);
+  const [language, setLanguage] = useState('ja'); // ja, en, ko
   const scrollTimeoutRef = useRef(null);
   const breathingPhaseRef = useRef(0);
   const [sceneProgress, setSceneProgress] = useState(0);
@@ -56,6 +57,42 @@ const SensoryUI = () => {
   };
 
   const currentScene = scenes[sceneMode];
+
+  // 翻訳テキスト
+  const translations = {
+    ja: {
+      udonConcept: '香川の讃岐うどんを実際に茹で、1本ずつ文字に形成。"食とデザインの融合"をテーマに、遊び心あるフォントを開発。手仕事のゆらぎをデジタルに取り込み、温度感ある書体へ昇華。',
+      achievement: 'Booth販売数 600件突破',
+      tool: 'Illustrator',
+      gagConcept: '誰でも気軽に投稿できる空気をつくるため、意図的に"手抜き風"のイラストを採用。明るい配色とゆるいモチーフで、"笑いの入口"をやさしくデザイン。',
+      gagTool: 'Illustrator, V0, VScode',
+      role: 'デザイン、コーディング、イラスト',
+      contactText: 'お仕事のご相談はこちらからお願いします。',
+      emailNote: '※ [at] を @ に変えてください'
+    },
+    en: {
+      udonConcept: 'Boiled Sanuki udon from Kagawa and shaped each strand into letters. Developed a playful font themed "fusion of food and design." Incorporated the fluctuation of handwork into digital, sublimating it into a typeface with warmth.',
+      achievement: 'Over 600 sales on Booth',
+      tool: 'Illustrator',
+      gagConcept: 'To create an atmosphere where anyone can post casually, intentionally adopted "rough-style" illustrations. Designed the "entrance to laughter" gently with bright colors and loose motifs.',
+      gagTool: 'Illustrator, V0, VScode',
+      role: 'Design, Coding, Illustration',
+      contactText: 'Please contact me for work inquiries.',
+      emailNote: '※ Replace [at] with @'
+    },
+    ko: {
+      udonConcept: '가가와의 사누키 우동을 실제로 삶아 한 가닥씩 문자로 형성. "음식과 디자인의 융합"을 테마로 유쾌한 폰트를 개발. 수작업의 흔들림을 디지털로 담아 온도감 있는 서체로 승화.',
+      achievement: 'Booth 판매 600건 돌파',
+      tool: 'Illustrator',
+      gagConcept: '누구나 부담 없이 게시할 수 있는 분위기를 만들기 위해 의도적으로 "러프 스타일" 일러스트를 채택. 밝은 배색과 여유로운 모티프로 "웃음의 입구"를 부드럽게 디자인.',
+      gagTool: 'Illustrator, V0, VScode',
+      role: '디자인, 코딩, 일러스트',
+      contactText: '업무 문의는 이쪽으로 부탁드립니다.',
+      emailNote: '※ [at]을 @로 바꿔주세요'
+    }
+  };
+
+  const t = translations[language];
 
   // マウス位置の追跡
   useEffect(() => {
@@ -274,6 +311,30 @@ const SensoryUI = () => {
 
   return (
     <div className="min-h-screen relative overflow-hidden cursor-none">
+      {/* 言語切り替えボタン */}
+      <div 
+        className="fixed top-6 right-6 z-50 flex gap-2 transition-opacity duration-1000"
+        style={{ opacity: uiVisible ? 1 : 0.3 }}
+      >
+        {['ja', 'en', 'ko'].map(lang => (
+          <button
+            key={lang}
+            onClick={() => setLanguage(lang)}
+            className={`px-3 py-1.5 rounded-md text-xs font-light tracking-wide transition-all duration-300 ${
+              language === lang 
+                ? 'bg-white/20 text-white/90' 
+                : 'bg-white/5 text-white/50 hover:bg-white/10'
+            }`}
+            style={{
+              backdropFilter: 'blur(10px)',
+              border: '1px solid rgba(255,255,255,0.1)'
+            }}
+          >
+            {lang === 'ja' ? '日本語' : lang === 'en' ? 'EN' : '한국어'}
+          </button>
+        ))}
+      </div>
+
       {/* 背景グラデーション */}
       <div 
         className={`fixed inset-0 bg-gradient-to-br ${currentScene.gradient} transition-all duration-[2000ms]`}
@@ -470,7 +531,7 @@ const SensoryUI = () => {
               {/* 画像 */}
               <div className="mb-4 rounded-lg overflow-hidden" style={{ maxHeight: '200px' }}>
                 <img 
-                  src="https://momonotsubo.github.io/portfolio/images/udon-font.jpg" 
+                  src="https://raw.githubusercontent.com/momonotsubo/portfolio/main/images/udon-font.jpg" 
                   alt="うどんフォント" 
                   className="w-full h-full object-cover"
                 />
@@ -480,18 +541,18 @@ const SensoryUI = () => {
                 <div>
                   <h3 className="text-white/50 text-xs mb-1 tracking-wider uppercase">Concept</h3>
                   <p className="text-xs md:text-sm font-light">
-                    香川の讃岐うどんを実際に茹で、1本ずつ文字に形成。"食とデザインの融合"をテーマに、遊び心あるフォントを開発。手仕事のゆらぎをデジタルに取り込み、温度感ある書体へ昇華。
+                    {t.udonConcept}
                   </p>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <h3 className="text-white/50 text-xs mb-1 tracking-wider uppercase">Achievement</h3>
-                    <p className="text-white/80 font-light text-xs">Booth販売数 600件突破</p>
+                    <p className="text-white/80 font-light text-xs">{t.achievement}</p>
                   </div>
                   <div>
                     <h3 className="text-white/50 text-xs mb-1 tracking-wider uppercase">Tool</h3>
-                    <p className="text-white/80 font-light text-xs">Illustrator</p>
+                    <p className="text-white/80 font-light text-xs">{t.tool}</p>
                   </div>
                 </div>
 
@@ -529,7 +590,7 @@ const SensoryUI = () => {
               {/* 画像 */}
               <div className="mb-4 rounded-lg overflow-hidden" style={{ maxHeight: '200px' }}>
                 <img 
-                  src="https://momonotsubo.github.io/portfolio/images/gag-app.jpg" 
+                  src="https://raw.githubusercontent.com/momonotsubo/portfolio/main/images/gag-app.jpg" 
                   alt="ギャグ投稿アプリ" 
                   className="w-full h-full object-cover"
                 />
@@ -539,18 +600,18 @@ const SensoryUI = () => {
                 <div>
                   <h3 className="text-white/50 text-xs mb-1 tracking-wider uppercase">Concept</h3>
                   <p className="text-xs md:text-sm font-light">
-                    誰でも気軽に投稿できる空気をつくるため、意図的に"手抜き風"のイラストを採用。明るい配色とゆるいモチーフで、"笑いの入口"をやさしくデザイン。
+                    {t.gagConcept}
                   </p>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <h3 className="text-white/50 text-xs mb-1 tracking-wider uppercase">Tool</h3>
-                    <p className="text-white/80 font-light text-xs">Illustrator, V0, VScode</p>
+                    <p className="text-white/80 font-light text-xs">{t.gagTool}</p>
                   </div>
                   <div>
                     <h3 className="text-white/50 text-xs mb-1 tracking-wider uppercase">Role</h3>
-                    <p className="text-white/80 font-light text-xs">デザイン、コーディング、イラスト</p>
+                    <p className="text-white/80 font-light text-xs">{t.role}</p>
                   </div>
                 </div>
               </div>
@@ -566,15 +627,14 @@ const SensoryUI = () => {
                 Contact
               </h2>
               <p className="text-base text-white/60 font-light leading-relaxed mb-6">
-                お仕事のご相談は<br className="md:hidden" />
-                こちらからお願いします。
+                {t.contactText}
               </p>
               <div className="mt-6">
                 <p className="text-white/70 text-sm font-light">
                   hitomitsuboiportforio[at]gmail.com
                 </p>
                 <p className="text-white/40 text-xs mt-2">
-                  ※ [at] を @ に変えてください
+                  {t.emailNote}
                 </p>
               </div>
             </ContentCard>
