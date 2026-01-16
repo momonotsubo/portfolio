@@ -470,7 +470,7 @@ const SensoryUI = () => {
               {/* 画像 */}
               <div className="mb-4 rounded-lg overflow-hidden" style={{ maxHeight: '200px' }}>
                 <img 
-                  src="images/udon-font.jpg" 
+                  src="https://momonotsubo.github.io/portfolio/images/udon-font.jpg" 
                   alt="うどんフォント" 
                   className="w-full h-full object-cover"
                 />
@@ -529,7 +529,7 @@ const SensoryUI = () => {
               {/* 画像 */}
               <div className="mb-4 rounded-lg overflow-hidden" style={{ maxHeight: '200px' }}>
                 <img 
-                  src="images/gag-app.jpg" 
+                  src="https://momonotsubo.github.io/portfolio/images/gag-app.jpg" 
                   alt="ギャグ投稿アプリ" 
                   className="w-full h-full object-cover"
                 />
