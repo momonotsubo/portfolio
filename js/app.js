@@ -8,11 +8,13 @@ const SensoryUI = () => {
   const [lightRays, setLightRays] = useState([]);
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
   const [uiVisible, setUiVisible] = useState(true);
-  const [language, setLanguage] = useState('ja'); // ja, en, ko
+  const [language, setLanguage] = useState('ja');
+  const [tapRipples, setTapRipples] = useState([]);
   const scrollTimeoutRef = useRef(null);
   const breathingPhaseRef = useRef(0);
   const [sceneProgress, setSceneProgress] = useState(0);
   const mouseTimeoutRef = useRef(null);
+  const rippleIdRef = useRef(0);
 
   const scenes = {
     night: {
@@ -116,9 +118,48 @@ const SensoryUI = () => {
       }, 4000);
     };
 
+    const handleTouch = (e) => {
+      const touch = e.touches[0];
+      const x = (touch.clientX / window.innerWidth) * 100;
+      const y = (touch.clientY / window.innerHeight) * 100;
+      
+      setMousePos({ x, y });
+      
+      // タップで波紋
+      setTapRipples(prev => [...prev, {
+        id: rippleIdRef.current++,
+        x: x,
+        y: y
+      }]);
+
+      setUiVisible(true);
+      clearTimeout(mouseTimeoutRef.current);
+      
+      mouseTimeoutRef.current = setTimeout(() => {
+        setUiVisible(false);
+      }, 4000);
+    };
+
     window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener('touchstart', handleTouch);
+    window.addEventListener('touchmove', handleTouch);
+    
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('touchstart', handleTouch);
+      window.removeEventListener('touchmove', handleTouch);
+    };
   }, []);
+
+  // タップ波紋の自動削除
+  useEffect(() => {
+    if (tapRipples.length > 0) {
+      const timer = setTimeout(() => {
+        setTapRipples(prev => prev.slice(1));
+      }, 800);
+      return () => clearTimeout(timer);
+    }
+  }, [tapRipples]);
 
   // シーンの自動切り替え
   useEffect(() => {
