@@ -61,9 +61,11 @@ const SensoryUI = () => {
   // 翻訳テキスト
   const translations = {
     ja: {
+      udonTitle: 'うどんフォント',
       udonConcept: '香川の讃岐うどんを実際に茹で、1本ずつ文字に形成。"食とデザインの融合"をテーマに、遊び心あるフォントを開発。手仕事のゆらぎをデジタルに取り込み、温度感ある書体へ昇華。',
       achievement: 'Booth販売数 600件突破',
       tool: 'Illustrator',
+      gagTitle: 'ギャグ投稿アプリ',
       gagConcept: '誰でも気軽に投稿できる空気をつくるため、意図的に"手抜き風"のイラストを採用。明るい配色とゆるいモチーフで、"笑いの入口"をやさしくデザイン。',
       gagTool: 'Illustrator, V0, VScode',
       role: 'デザイン、コーディング、イラスト',
@@ -71,9 +73,11 @@ const SensoryUI = () => {
       emailNote: '※ [at] を @ に変えてください'
     },
     en: {
+      udonTitle: 'Udon Font',
       udonConcept: 'Boiled Sanuki udon from Kagawa and shaped each strand into letters. Developed a playful font themed "fusion of food and design." Incorporated the fluctuation of handwork into digital, sublimating it into a typeface with warmth.',
       achievement: 'Over 600 sales on Booth',
       tool: 'Illustrator',
+      gagTitle: 'Gag Posting App',
       gagConcept: 'To create an atmosphere where anyone can post casually, intentionally adopted "rough-style" illustrations. Designed the "entrance to laughter" gently with bright colors and loose motifs.',
       gagTool: 'Illustrator, V0, VScode',
       role: 'Design, Coding, Illustration',
@@ -81,9 +85,11 @@ const SensoryUI = () => {
       emailNote: '※ Replace [at] with @'
     },
     ko: {
+      udonTitle: '우동 폰트',
       udonConcept: '가가와의 사누키 우동을 실제로 삶아 한 가닥씩 문자로 형성. "음식과 디자인의 융합"을 테마로 유쾌한 폰트를 개발. 수작업의 흔들림을 디지털로 담아 온도감 있는 서체로 승화.',
       achievement: 'Booth 판매 600건 돌파',
       tool: 'Illustrator',
+      gagTitle: '개그 게시 앱',
       gagConcept: '누구나 부담 없이 게시할 수 있는 분위기를 만들기 위해 의도적으로 "러프 스타일" 일러스트를 채택. 밝은 배색과 여유로운 모티프로 "웃음의 입구"를 부드럽게 디자인.',
       gagTool: 'Illustrator, V0, VScode',
       role: '디자인, 코딩, 일러스트',
@@ -525,7 +531,7 @@ const SensoryUI = () => {
           <div className="min-h-screen flex items-center justify-center p-8">
             <ContentCard delay={1}>
               <h2 className="text-lg md:text-xl text-white/80 font-light mb-4 tracking-wide">
-                うどんフォント
+                {t.udonTitle}
               </h2>
               
               {/* 画像 */}
@@ -584,7 +590,7 @@ const SensoryUI = () => {
           <div className="min-h-screen flex items-center justify-center p-8">
             <ContentCard delay={2} isDark={true}>
               <h2 className="text-lg md:text-xl text-white/80 font-light mb-4 tracking-wide">
-                ギャグ投稿アプリ
+                {t.gagTitle}
               </h2>
               
               {/* 画像 */}
