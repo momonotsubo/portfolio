@@ -71,7 +71,7 @@ const SensoryUI = () => {
       gagConcept: '誰でも気軽に投稿できる空気をつくるため、意図的に"手抜き風"のイラストを採用。明るい配色とゆるいモチーフで、"笑いの入口"をやさしくデザイン。',
       gagTool: 'Illustrator, V0, VScode',
       role: 'デザイン、コーディング、イラスト',
-      contactText: 'お仕事のご相談はこちらからお願いします。',
+      contactText: '詳しい実績はPDFのポートフォリオをお送りいたします。お仕事のご相談はこちらからお願いします。',
       emailNote: '※ [at] を @ に変えてください'
     },
     en: {
@@ -83,7 +83,7 @@ const SensoryUI = () => {
       gagConcept: 'To create an atmosphere where anyone can post casually, intentionally adopted "rough-style" illustrations. Designed the "entrance to laughter" gently with bright colors and loose motifs.',
       gagTool: 'Illustrator, V0, VScode',
       role: 'Design, Coding, Illustration',
-      contactText: 'Please contact me for work inquiries.',
+      contactText: 'For detailed work samples, I will send you my portfolio via PDF. Please contact me here for work inquiries.',
       emailNote: '※ Replace [at] with @'
     },
     ko: {
@@ -95,7 +95,7 @@ const SensoryUI = () => {
       gagConcept: '누구나 부담 없이 게시할 수 있는 분위기를 만들기 위해 의도적으로 "러프 스타일" 일러스트를 채택. 밝은 배색과 여유로운 모티프로 "웃음의 입구"를 부드럽게 디자인.',
       gagTool: 'Illustrator, V0, VScode',
       role: '디자인, 코딩, 일러스트',
-      contactText: '업무 문의는 이쪽으로 부탁드립니다.',
+      contactText: '자세한 실적은 PDF 포트폴리오를 보내드리겠습니다. 업무 관련 문의는 여기로 부탁드립니다.',
       emailNote: '※ [at]을 @로 바꿔주세요'
     }
   };
